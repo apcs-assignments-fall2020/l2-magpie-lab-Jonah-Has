@@ -10,6 +10,11 @@ public class MagpieRunner
     /**
      * Create a Magpie, give it user input, and print its replies.
      */
+
+
+    //When two keywords are called, the one higher up in the method is prioritized because it's reached first.
+    //When a keyword is embedded in another word, it will get called if it's the first keyword to show up.
+
     public static void main(String[] args)
     {
     	Magpie maggie = new Magpie();
