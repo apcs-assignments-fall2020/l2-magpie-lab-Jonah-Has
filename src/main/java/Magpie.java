@@ -34,37 +34,37 @@ public class Magpie
         if (statement.trim().length() < 1){
             response = "Say something, please.";
         }
-        else if (statement.indexOf("no") >= 0)
+        else if (findWord(statement,"no") >= 0)
         {
             response = "Why so negative?";
         }
-        else if (statement.indexOf("mother") >= 0
-                || statement.indexOf("father") >= 0
-                || statement.indexOf("sister") >= 0
-                || statement.indexOf("brother") >= 0)
+        else if (findWord(statement,"mother") >= 0
+                || findWord(statement,"father") >= 0
+                || findWord(statement,"sister") >= 0
+                || findWord(statement,"brother") >= 0)
         {
             response = "Tell me more about your family.";
         }
-        else if (statement.indexOf("dog") >= 0
-                || statement.indexOf("cat") >= 0)
+        else if (findWord(statement,"dog") >= 0
+                || findWord(statement,"cat") >= 0)
         {
             response = "Tell me more about your pets.";
         }
-        else if (statement.indexOf("Nathan") >= 0)
+        else if (findWord(statement,"Nathan") >= 0)
         {
             response = "Yes, Nathan is a very good teacher.";
         }
-        else if (statement.indexOf("fun") >= 0)
+        else if (findWord(statement,"fun") >= 0)
         {
             response = "Fun? I like having fun!";
         }
-        else if (statement.indexOf("pen the pod bay doors") >= 0)
+        else if (findWord(statement,"pen the pod bay door") >= 0)
         {
             response = "I'm sorry Dave, I'm afraid I can't do that.";
         }
-        else if (statement.indexOf("chess") >= 0)
+        else if (findWord(statement,"chess") >= 0)
         {
-            response = "Hmm, we should play chess some time. I've heard I'm quite good!";
+            response = "Hmm, we should play chess some time. People tell me I'm quite good!";
         }
         else
         {
@@ -121,8 +121,39 @@ public class Magpie
 
     // The method returns the index of the first character in word
     // if it is found, and returns -1 otherwise. 
-    public int findWord(String str, String word) {
-        return -1;
+    public static int findWord(String str, String word){
+        
+        str = str.toLowerCase();
+        word = word.toLowerCase();
+        if (str.indexOf(word) == -1){
+            return -1;
+        }
+        else{
+            char q;
+            if (str.indexOf(word) > 0){
+                q = str.charAt(str.indexOf(word) - 1);
+            }
+            else{
+                q = ' ';
+            }
+            
+            char p;
+
+            if (str.indexOf(word) + word.length() >= str.length()){
+                p = ' ';
+            }
+            else{
+                p = str.charAt(str.indexOf(word) + word.length());
+            }
+
+            if (q != ' ' && p != ' '){
+                return -1;
+            }
+            else{
+                return (str.indexOf(word));
+            }
+
+        }
     }
 
     
