@@ -167,8 +167,17 @@ public class Magpie
      */
     public String transformIWantStatement(String statement)
     {
-        //your code here
-        return "";
+        int q = findWord(statement, "I want ");
+        String ret = "";
+        int i = 0;
+        while(true){
+            ret += statement.charAt(q + 7 + i);
+            i++;
+            if (q + 7 + i >= statement.length() || (statement.charAt(q + 7 + i)) == '.'){
+                break;
+            }
+        }
+        return "Would you really be happy if you had " + ret + "?";
     }
 
     /**
@@ -179,8 +188,17 @@ public class Magpie
      */
     public String transformIYouStatement(String statement)
     {
-        //your code here
-        return "";
+        int q = findWord(statement, "I ");
+        String ret = "";
+        int i = 0;
+        while(true){
+            ret += statement.charAt(q + 2 + i);
+            i++;
+            if (q + 2 + i >= statement.length() || (findWord(statement," you")) == q + 2 + i){
+                break;
+            }
+        }
+        return "Why do you " + ret + " me?";
     }
 
     /**
@@ -191,8 +209,17 @@ public class Magpie
      */
     public String transformIWantToStatement(String statement)
     {
-        // your code here
-        return "";
+        int q = findWord(statement, "I want to ");
+        String ret = "";
+        int i = 0;
+        while(true){
+            ret += statement.charAt(q + 10 + i);
+            i++;
+            if (q + 10 + i >= statement.length() || (findWord(statement,".")) == q + 10 + i){
+                break;
+            }
+        }
+        return "What would it mean to " + ret + "?";
     }
 
 
@@ -206,7 +233,16 @@ public class Magpie
      */
     public String transformYouMeStatement(String statement)
     {
-        // your code here
-        return "";
+        int q = findWord(statement, "you ");
+        String ret = "";
+        int i = 0;
+        while(true){
+            ret += statement.charAt(q + 4 + i);
+            i++;
+            if (q + 4 + i >= statement.length() || (findWord(statement," me")) == q + 4 + i){
+                break;
+            }
+        }
+        return "What makes you think that I " + ret + " you?";
     }
 }
